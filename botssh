@@ -33,14 +33,14 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "Ya lo has creado, vuelve mañana 🤝"
+        --text "Ya lo has creado, vuelve en 7 días 🤝"
       return 0
     }
     usuario=$(echo SSH$(( RANDOM% + 250 )))
     senha=$((RANDOM% + 999999))
     limite='1'
     tempo='3'
-    tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
+    tuserdate=$(date '+%C%y/%m/%d' -d " +7 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
     echo "$senha" > /etc/SSHPlus/senha/$usuario
@@ -118,7 +118,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GERNERAR
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARCHIVOS HC 🔰' --callback_data 'sksenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARCHIVOS EHI 🔰' --callback_data 'ehienviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '👨‍💻COMPRE UN MES AQUI👨‍💻'  --callback_data '2' --url 't.me/admin' # privado
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '👨‍💻COMPRE UN MES AQUI👨‍💻'  --callback_data '2' --url 't.me/Net_Satoshi' # privado
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '⚠️ TERMINOS ⚠️'  --callback_data '3' --url 'https://bitbin.it/WUwitdNa/raw/' # termos
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
